@@ -20,3 +20,14 @@ export const createStudent = async (req, res) => {
     res.status(409).json({message: `Something went wrong! Error.: ${error}`})
   }
 }
+
+export const deleteStudent = async (req, res) => {
+  const id = req.params.id
+  
+  try {
+    await Student.findByIdAndRemove(id).exec()
+    res.status(200).json({ message: 'Student was successfully deleted.'})
+  } catch (error) {
+    res.status(400).json({message: `Something went wrong. Error.: ${error}`})
+  }
+}
