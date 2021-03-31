@@ -11,6 +11,7 @@ const app = express()
 app.use(express.json({ limit: '20mb', extended: true }))
 app.use(express.urlencoded({limit: '20mb', extended: true}))
 app.use(cors())
+
 app.use('/students', studentRoutes)
 
 mongoose.connect(process.env.CONNECTION_URL, {
